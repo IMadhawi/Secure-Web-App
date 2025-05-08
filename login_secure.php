@@ -22,7 +22,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Store both username and role in the session
             $_SESSION['username'] = $user['username'];
             $_SESSION['role'] = $user['role'];
-            header("Location: dashboard.php");
+            $_SESSION['user_id'] = $user['id'];
+            header("Location: dashboard_secure.php");
             exit();
         } else {
             $error = "Invalid username or password.";
