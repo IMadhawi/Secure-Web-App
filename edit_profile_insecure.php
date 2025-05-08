@@ -40,7 +40,7 @@ $stmt->close();
 <div class="form-container">
     <h2>Edit Your Bio</h2>
     <form method="POST">
-        <textarea name="bio" rows="4"><?= htmlspecialchars($bio) ?></textarea><br>
+        <textarea name="bio" rows="4"><?= $bio ?></textarea>
         <button type="submit">Update</button>
     </form>
 </div>

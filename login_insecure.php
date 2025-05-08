@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 include('config.php');
 session_start();
 
@@ -21,12 +24,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['username'] = $user['username'];
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['role'] = $user['role'];
-        
         header("Location: dashboard_insecure.php");
         exit();
+        
+       
     } else {
         $error = "Invalid username or password.";
     }
+
+    
 }
 ?>
 

@@ -1,6 +1,12 @@
 <?php
 include('config.php');
+session_set_cookie_params([
+    'secure' => true,       // Ensures cookies are only sent over HTTPS
+    'httponly' => true,     // Prevents JavaScript access to session cookie
+    'samesite' => 'Strict'  // Prevents CSRF from cross-origin requests
+]);
 session_start();
+session_regenerate_id(true); // Prevents session fixation
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
      // Get the username and password
@@ -24,7 +30,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['role'] = $user['role'];
             $_SESSION['user_id'] = $user['id'];
             header("Location: dashboard_secure.php");
-            exit();
         } else {
             $error = "Invalid username or password.";
         }
