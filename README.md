@@ -90,9 +90,12 @@ This project is designed to:
 ---
 
 ## 🗂 Folder Structure
-/secure                 # Secure version of the website
-/insecure               # Insecure version of the website
-/images                 # Images used for movies
-/db.sql                 # Database schema and test data
-/SecurityReport.md      # Security report
-/README.md              # This file
+
+```
+/secure              Secure version of the website
+/insecure            Insecure version of the website
+/images              Images used for movies
+/db.sql              Database schema and test data
+/SecurityReport.md   Security report
+/README.md           This file
+```
