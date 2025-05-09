@@ -37,7 +37,11 @@ $stmt->close();
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="form-container1">
+<div class="form-container">
+    <div class="login-logo">
+        <img src="images/Popcorn opinions logo.png" alt="Popcorn Logo" class="logo-img">
+        <div class="app-title">Popcorn Opinions</div>
+    </div>
     <h2>Edit Your Bio</h2>
     <form method="POST">
 
