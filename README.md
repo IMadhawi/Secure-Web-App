@@ -97,7 +97,6 @@ This project is designed to:
 /secure              Secure version of the website
 /insecure            Insecure version of the website
 /db.sql              Database schema and test data
-/SecurityReport.md   Security report
 /README.md           This file
 ```
 
