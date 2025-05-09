@@ -46,9 +46,7 @@ $stmt->close();
 </head>
 <body>
 <div class="dashboard-container">
-    <!-- XSS PREVENTION -->
-    <!-- htmlspecialchars() escapes special characters like <and> -->
-    <!-- This prevents attackers from injecting JavaScript in usernames or bios -->
+   
     <div class="dashboard-card">
         <header class="dashboard-header">
             <div class="login-logo">
@@ -60,6 +58,9 @@ $stmt->close();
 
         <main>
             <h2>Profile</h2>
+             <!-- XSS PREVENTION -->
+            <!-- htmlspecialchars() escapes special characters like <and> -->
+             <!-- This prevents attackers from injecting JavaScript in usernames or bios -->
             <p><strong>Username:</strong> <?= htmlspecialchars($_SESSION['username']) ?></p>
             <p><strong>Role:</strong> <?= htmlspecialchars($_SESSION['role']) ?></p>
             <p><strong>Bio:</strong> <?= htmlspecialchars($bio) ?: 'No bio yet.' ?></p>
