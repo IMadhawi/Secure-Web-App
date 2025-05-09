@@ -37,13 +37,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header("Location: login_secure.php");
 }
 ?>
+<!DOCTYPE html>
 <html>
-    <h1>Register</h1>
-    <form id="registerform" method="POST">
-        <label for="username">Username</label>
-        <input name="username" required>
-        <label for="password">Password</label>
-        <input name="password" type="password" required>
-        <button type="submit">Register</button>
-    </form>
+<head>
+    <link rel="stylesheet" href="style.css">
+    <title>Register</title>
+</head>
+<body class="login-page">
+    <div class="login-container">
+        <h2>Register 🎬</h2>
+        <form method="POST">
+            <label for="username">Username</label>
+            <input name="username" placeholder="Username" required>
+            <label for="password">Password</label>
+            <input name="password" type="password" placeholder="Password" required>
+            <button type="submit">Register</button>
+        </form>
+        <p class="signup-link">Already have an account? <a href="login_secure.php">Login</a></p>
+    </div>
+</body>
 </html>

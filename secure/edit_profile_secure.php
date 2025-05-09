@@ -37,19 +37,20 @@ $stmt->bind_result($bio);
 $stmt->fetch();
 $stmt->close();
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Edit Profile</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="form-container">
+<div class="form-container1">
     <h2>Edit Your Bio</h2>
     <form method="POST">
-            <!-- XSS PREVENTION -->
-            <!-- htmlspecialchars() is used to escape special characters in the bio text,
-            which prevents execution of any malicious scripts -->
+        <!-- XSS PREVENTION -->
+        <!-- htmlspecialchars() is used to escape special characters in the bio text,
+        which prevents execution of any malicious scripts -->
         <textarea name="bio" rows="4"><?= htmlspecialchars($bio) ?></textarea><br>
         <button type="submit">Update</button>
     </form>

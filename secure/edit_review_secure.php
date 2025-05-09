@@ -44,17 +44,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     exit;
 }
 ?>
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Edit Review</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="form-container">
     <h2>Edit Review</h2>
     <form method="POST">
-        <textarea name="review" rows="4"><?= htmlspecialchars($review['review_content']) ?></textarea><br>
+        <textarea name="review" rows="4"><?= htmlspecialchars($review['review_content']) ?></textarea><br>        
         <button type="submit">Save</button>
     </form>
 </div>
