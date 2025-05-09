@@ -82,8 +82,8 @@ This project is designed to:
   - 🔓 Insecure version:
     - Any user can edit or delete **any** review
   - 🔐 Secure version:
-    - Users can only **edit their own reviews**
-    - Only **admins** and the review's owner can delete a review
+    - Users can only **edit and delete their own reviews** 
+    - Only **admins** can deletes any review
 
 ### 5. HTTPS Enforcement
 - The **secure version** is served over **HTTPS** using a valid SSL certificate
