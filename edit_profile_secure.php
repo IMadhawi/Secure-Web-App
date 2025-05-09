@@ -40,6 +40,9 @@ $stmt->close();
 <div class="form-container">
     <h2>Edit Your Bio</h2>
     <form method="POST">
+            <!-- XSS PREVENTION -->
+            <!-- htmlspecialchars() is used to escape special characters in the bio text,
+            which prevents execution of any malicious scripts -->
         <textarea name="bio" rows="4"><?= htmlspecialchars($bio) ?></textarea><br>
         <button type="submit">Update</button>
     </form>

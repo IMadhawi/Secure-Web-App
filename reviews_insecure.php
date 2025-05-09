@@ -68,15 +68,18 @@ $stmt->close();
     </form>
 
     <hr>
-
     <!-- Display all reviews -->
     <?php foreach ($reviews as $r): ?>
         <p><strong><?= htmlspecialchars($r['username']) ?>:</strong><br>
-        <?= $r['review_content'] ?> <!-- This allows XSS -->
 
+        <!-- XSS VULNERABILITY -->
+        <!-- If a user submits <script>alert('XSS')</script>, it will execute here -->
+        <?= $r['review_content'] ?>
 
-    <a href="edit_review_insecure.php?id=<?= $r['id'] ?>&movie_id=<?= $movie_id ?>">Edit</a>
-    <a href="delete_review_insecure.php?id=<?= $r['id'] ?>&movie_id=<?= $movie_id ?>">Delete</a>
+        <!-- No access control check (anyone can see edit/delete buttons) -->
+        <!-- RBAC is ignored — user or admin logic is missing -->
+        <a href="edit_review_insecure.php?id=<?= $r['id'] ?>&movie_id=<?= $movie_id ?>">Edit</a>
+        <a href="delete_review_insecure.php?id=<?= $r['id'] ?>&movie_id=<?= $movie_id ?>">Delete</a>
     <hr>
 
     <?php endforeach; ?>

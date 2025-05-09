@@ -2,12 +2,16 @@
 session_start();
 include('config.php');
 
+// AUTHENTICATION CHECK
+// Only logged-in users can access this page.
+// This ensures unauthorized users cannot access or view movies.
 if (!isset($_SESSION['user_id'])) {
     header("Location: login_secure.php");
     exit;
 }
 
-// Fetch movies securely
+// FETCH MOVIES SAFELY
+// No need for a prepared statement since there's no external input involved.
 $movies = [];
 $result = $conn->query("SELECT * FROM movies");
 if ($result) {

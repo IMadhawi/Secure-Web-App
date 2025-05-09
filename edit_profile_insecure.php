@@ -40,6 +40,9 @@ $stmt->close();
 <div class="form-container">
     <h2>Edit Your Bio</h2>
     <form method="POST">
+
+    <!-- XSS VULNERABILITY: Bio is printed directly without sanitization -->
+    <!-- An attacker could inject something like: <script>alert('Hacked!')</script> -->
         <textarea name="bio" rows="4"><?= $bio ?></textarea>
         <button type="submit">Update</button>
     </form>

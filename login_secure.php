@@ -1,19 +1,31 @@
 <?php
 include('config.php');
+
+// SESSION SECURITY CONFIGURATION
+//  We configure the session cookie with the following properties:
+// - secure: Ensures the session cookie is sent only over HTTPS (prevents sniffing on public networks)
+// - httponly: Prevents JavaScript from accessing the session cookie (protects against XSS)
+// - samesite: Prevents CSRF by disallowing cross-site usage of the cookie
 session_set_cookie_params([
-    'secure' => true,       // Ensures cookies are only sent over HTTPS
-    'httponly' => true,     // Prevents JavaScript access to session cookie
-    'samesite' => 'Strict'  // Prevents CSRF from cross-origin requests
+    'secure' => true,     
+    'httponly' => true,     
+    'samesite' => 'Strict'
 ]);
+
 session_start();
-session_regenerate_id(true); // Prevents session fixation
+// SESSION FIXATION PROTECTION:
+// We regenerate the session ID after login to prevent session fixation attacks,
+// where an attacker might force a user to use a known session ID.
+session_regenerate_id(true); 
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-     // Get the username and password
+    // Get the username and password
     $username = $_POST['username'];
-    $password = $_POST['password'];
+    $password = $_POST['password']; // Plain-text user input, will be verified securely
 
-    // Use a prepared statement to prevent SQL injection
+    // SQL INJECTION PREVENTION:
+    // We use prepared statements with placeholders (?) to separate SQL logic from user input.
+    // This protects against injection attacks like: ' OR '1'='1
     $stmt = $conn->prepare("SELECT * FROM users WHERE username = ?");
     $stmt->bind_param("s", $username);
     $stmt->execute();
@@ -23,13 +35,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($result && $result->num_rows > 0) {
         $user = $result->fetch_assoc();
 
-        // Verify password using password verify using Bcrypt
+        // SECURE PASSWORD VERIFICATION:
+        // We use password_verify() to compare the entered password with the hashed password.
+        // The password was hashed using bcrypt at registration time.
+        //   Why bcrypt?
+        // - It’s slow and computationally expensive → resists brute-force attacks
+        // - It includes automatic salting → protects against rainbow tables (precomputed hash lookups)
         if (password_verify($password, $user['password'])) {
-            // Store both username and role in the session
+            
+            // MINIMAL SESSION DATA:
+            // We only store necessary data in the session (no passwords).
+            // These values are used to personalize the session and enforce role-based access control.
             $_SESSION['username'] = $user['username'];
-            $_SESSION['role'] = $user['role'];
+            $_SESSION['role'] = $user['role']; // Used for RBAC in secure pages
             $_SESSION['user_id'] = $user['id'];
-            header("Location: dashboard_secure.php");
+            header("Location: dashboard_secure.php"); // Redirect to dashboard after successful login
         } else {
             $error = "Invalid username or password.";
         }

@@ -7,7 +7,7 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-// Fetch movies securely
+// Fetch movies
 $movies = [];
 $result = $conn->query("SELECT * FROM movies");
 if ($result) {

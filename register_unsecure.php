@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $conn->query($sql);
 
     // Redirects to the login page
-    header("Location: login_unsecure.php");
+    header("Location: login_insecure.php");
 }
 ?>
 <html>

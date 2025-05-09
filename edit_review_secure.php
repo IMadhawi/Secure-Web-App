@@ -11,7 +11,7 @@ $review_id = (int)$_GET['id'];
 $movie_id = (int)$_GET['movie_id'];
 $user_id = $_SESSION['user_id'];
 
-// Fetch the review to verify ownership/admin
+// FETCH REVIEW TO VERIFY OWNERSHIP OR ADMIN PRIVILEGE
 $stmt = $conn->prepare("SELECT * FROM reviews WHERE id = ?");
 $stmt->bind_param("i", $review_id);
 $stmt->execute();
@@ -19,6 +19,9 @@ $result = $stmt->get_result();
 $review = $result->fetch_assoc();
 $stmt->close();
 
+// ROLE-BASED ACCESS CONTROL (RBAC) ENFORCEMENT (Server-side)
+// Although the Edit/Delete buttons are conditionally shown on the frontend,
+// this check is still necessary to protect against manual URL tampering.
 if (!$review || ($review['user_id'] != $user_id && $_SESSION['role'] !== 'admin')) {
     exit("Unauthorized");
 }

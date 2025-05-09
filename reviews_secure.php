@@ -1,11 +1,13 @@
 <?php
-// Start session to access user data
+// START SESSION SECURELY
+// Starts the session to access user-specific data like user_id, username, and role.
 session_start();
 
 // Include database configuration
 include('config.php');
 
-// Redirect to login page if user is not authenticated
+// AUTHENTICATION CHECK
+// Only logged-in users can post or view reviews
 if (!isset($_SESSION['user_id'])) {
     header("Location: login_secure.php");
     exit;
@@ -18,8 +20,6 @@ $movie_id = isset($_GET['movie_id']) ? (int)$_GET['movie_id'] : 0;
 // Handle new review submission
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['review']) && $movie_id) {
     $review = $_POST['review'];
-
-    // Insert new review using prepared statement (secure)
     $stmt = $conn->prepare("INSERT INTO reviews (user_id, movie_id, review_content) VALUES (?, ?, ?)");
     $stmt->bind_param("iis", $user_id, $movie_id, $review);
     $stmt->execute();
@@ -72,19 +72,23 @@ $stmt->close();
     <!-- Display all reviews -->
     <?php foreach ($reviews as $r): ?>
         <p><strong><?= htmlspecialchars($r['username']) ?>:</strong><br>
+        <!-- XSS PREVENTION -->
+        <!-- htmlspecialchars() escapes special characters like <and> -->
+        <!-- This prevents attackers from injecting JavaScript in usernames or bios -->
         <?= htmlspecialchars($r['review_content']) ?></p>
 
-       <!-- Only show Edit/Delete if user is owner -->
+    <!-- RBAC (ROLE-BASED ACCESS CONTROL) -->
+    <!-- Regular users can only edit/delete their own reviews -->
     <?php if ($r['user_id'] == $_SESSION['user_id']): ?>
-    <a href="edit_review_secure.php?id=<?= $r['id'] ?>&movie_id=<?= $movie_id ?>">Edit</a>
-    <a href="delete_review_secure.php?id=<?= $r['id'] ?>&movie_id=<?= $movie_id ?>">Delete</a>
+        <a href="edit_review_secure.php?id=<?= $r['id'] ?>&movie_id=<?= $movie_id ?>">Edit</a>
+        <a href="delete_review_secure.php?id=<?= $r['id'] ?>&movie_id=<?= $movie_id ?>">Delete</a>
     <?php endif; ?>
-    <!-- Admins can delete any review -->
+    
+    <!-- Admins can delete any review (but not edit unless owner) -->
     <?php if ($_SESSION['role'] === 'admin' && $r['user_id'] != $_SESSION['user_id']): ?>
-    <a href="delete_review_secure.php?id=<?= $r['id'] ?>&movie_id=<?= $movie_id ?>">Delete</a>
+        <a href="delete_review_secure.php?id=<?= $r['id'] ?>&movie_id=<?= $movie_id ?>">Delete</a>
     <?php endif; ?>
     <hr>
-
     <?php endforeach; ?>
 </div>
 </body>

@@ -1,7 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
 include('config.php');
 session_start();
 
@@ -10,21 +7,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // Insecure password hashing using MD5
+    // INSECURE: Weak password hashing using MD5
+    // MD5 is fast and unsalted, which makes it vulnerable to:
+    // - Rainbow table attacks (precomputed hash lookups)
+    // - Brute-force attacks due to its speed
+    // - Collisions (different inputs generating the same hash)
     $hashed_password = md5($password);
 
-    // Vulnerable SQL query
+    // INSECURE: Vulnerable to SQL Injection
+    // This query directly includes user input without validation or parameterization.
+    // An attacker can inject something like: ' OR '1'='1 to bypass authentication
     $query = "SELECT * FROM users WHERE username = '$username' AND password = '$hashed_password'";
     $result = mysqli_query($conn, $query);
 
     // Check if user exists
     if ($result && mysqli_num_rows($result) > 0) {
+        // Fetch user data and store it in the session
         $user = $result->fetch_assoc();
-        // Store required session data
+
+        // No session hardening (e.g., session_regenerate_id not used)
+        // This leaves the application vulnerable to session fixation attacks
         $_SESSION['username'] = $user['username'];
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['role'] = $user['role'];
-        header("Location: dashboard_insecure.php");
+        header("Location: dashboard_insecure.php"); // Redirect to insecure dashboard after successful login
         exit();
         
        
@@ -44,6 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <h2>Login</h2>
     <?php if (isset($error)) echo "<p style='color:red;'>$error</p>"; ?>
+    <!-- The form is functional, but back-end security is weak -->
     <form method="POST" action="">
         <input type="text" name="username" placeholder="Username" required><br><br>
         <input type="password" name="password" placeholder="Password" required><br><br>
