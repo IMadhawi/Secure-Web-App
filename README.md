@@ -59,7 +59,7 @@ This project is designed to:
 
 ### 1. SQL Injection (Insecure Version)
 - Go to the insecure login form
-- In the **username** field, enter: `' OR '1'='1 #`
+- In the **username** field, enter: `' OR 1=1 #`
 - Enter anything in the password field
 - ✅ This should bypass login in the **insecure** version but **fail** in the secure one
 
@@ -96,7 +96,6 @@ This project is designed to:
 ```
 /secure              Secure version of the website
 /insecure            Insecure version of the website
-/images              Images used for movies
 /db.sql              Database schema and test data
 /SecurityReport.md   Security report
 /README.md           This file
