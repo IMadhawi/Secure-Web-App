@@ -72,8 +72,10 @@ This project is designed to:
 - ✅ **Secure version**: The input is escaped and shown as plain text
 
 ### 3. Weak Password Hashing
-- 🔓 Insecure version: Passwords are stored using **MD5**, which is fast and easy to crack
-- 🔐 Secure version: Passwords are hashed using **bcrypt**, which is salted and slow, making it secure
+- 🔓 Insecure version: Passwords are stored using **MD5**, which is fast, unsalted, and easily cracked
+- These MD5 hashes can be reversed using tools like [https://crackstation.net](https://crackstation.net)
+  - Example: `21232f297a57a5a743894a0e4a801fc3` → `admin`
+- 🔐 Secure version: Uses `password_hash()` with **bcrypt**, which is slow and salted — making it resistant to brute-force and rainbow table attacks
 
 ### 4. Access Control
 - Try editing or deleting reviews:
