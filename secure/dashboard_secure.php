@@ -1,4 +1,11 @@
 <?php
+// FORCE HTTPS
+if (empty($_SERVER['HTTPS']) || $_SERVER['HTTPS'] === "off") {
+    $redirect = "https://" . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
+    header("Location: $redirect");
+    exit();
+}
+
 // START SESSION SECURELY
 // Starts the session to access user-specific data like user_id, username, and role.
 // In secure applications, this should be started after setting secure session cookie parameters (done in login).
