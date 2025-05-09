@@ -50,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body class="login-page">
     <div class="login-container">
-        <h2>Login</h2>
+        <h2>Login🎬</h2>
         <?php if (isset($error)) echo "<p style='color:red;'>$error</p>"; ?>
         <!-- The form is functional, but back-end security is weak -->
         <form method="POST" action="">
