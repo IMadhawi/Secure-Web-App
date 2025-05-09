@@ -44,7 +44,7 @@ This project is designed to:
 3. Create a hosting account and choose a subdomain (e.g., `popcornopinions`)
 4. Open the **Control Panel (cPanel)** for your hosting account
 5. Go to **MySQL Databases**, create a new database, and import `db.sql`
-6. Use the **Online File Manager** to upload the desired project folder (`secure/` or `insecure/`) and the `/images` folder
+6. Use the **Online File Manager** to upload the desired project folder (`secure/` or `insecure/`)
 7. Install a free SSL certificate from the **"Free SSL Certificate"** tab in InfinityFree for the secure version
 8. Access your app in a web browser via your domain
 
@@ -82,8 +82,8 @@ This project is designed to:
   - 🔓 Insecure version:
     - Any user can edit or delete **any** review
   - 🔐 Secure version:
-    - Users can only **edit their own reviews**
-    - Only **admins** and the review's owner can delete a review
+    - Users can only **edit and delete their own reviews** 
+    - Only **admins** can deletes any review
 
 ### 5. HTTPS Enforcement
 - The **secure version** is served over **HTTPS** using a valid SSL certificate
