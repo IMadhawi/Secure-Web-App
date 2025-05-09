@@ -51,6 +51,7 @@ This project is designed to:
 > 🔖 Notes:
 > - Add movie data manually into the database
 > - All registered users are assigned the `user` role by default. To promote users to `admin`, update their role manually in the database
+> update the config.php file with your info for database connection
 
 ---
 
