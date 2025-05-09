@@ -101,3 +101,9 @@ This project is designed to:
 /SecurityReport.md   Security report
 /README.md           This file
 ```
+
+---
+
+## 🙏 Acknowledgment
+
+Special thanks to **Ghaida Alhussain** for her generous guidance and support in helping us explore and set up **InfinityFree** hosting. Her clear instructions and detailed steps made it possible to successfully deploy both versions of this project online.
