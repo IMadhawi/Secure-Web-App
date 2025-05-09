@@ -45,6 +45,8 @@ $stmt->close();
             <h2>Profile</h2>
             <p><strong>Username:</strong> <?= htmlspecialchars($_SESSION['username']) ?></p>
             <p><strong>Role:</strong> <?= htmlspecialchars($_SESSION['role']) ?></p>
+             <!-- XSS VULNERABILITY: Bio is printed directly without sanitization -->
+             <!-- An attacker could inject something like: <script>alert('Hacked!')</script> -->
             <p><strong>Bio:</strong> <?= htmlspecialchars($bio) ?: 'No bio yet.' ?></p>
 
             <div class="dashboard-buttons">
