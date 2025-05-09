@@ -37,7 +37,7 @@ $stmt->close();
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="form-container">
+<div class="form-container1">
     <h2>Edit Your Bio</h2>
     <form method="POST">
 

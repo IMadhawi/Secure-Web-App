@@ -31,6 +31,32 @@ body.login-page {
     margin: 40px auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
+.form-container1 {
+    background-color: #1e1e1e;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 25px;
+    max-width: 700px;
+    margin: 40px auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.form-container1 textarea {
+    width: 100%;
+    max-width: 600px;
+    padding: 10px;
+    margin: 20px 0;
+    border: 1px solid #555;
+    border-radius: 6px;
+    font-size: 14px;
+    background-color: #2a2a2a;
+    color: white;
+    resize: vertical;
+    display: block;
+}
+
 
 /* ========== Headings ========== */
 h1, h2, h3 {
@@ -47,8 +73,12 @@ h1, h2, h3 {
 
 /* ========== Form Elements ========== */
 form {
-    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
 
 input, textarea, select {
     width: 100%;
@@ -230,4 +260,83 @@ body.login-page {
 
 .signup-link a:hover {
     text-decoration: underline;
+}
+.dashboard-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #121212;
+    padding: 20px;
+}
+
+.dashboard-card {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    padding: 30px 40px;
+    border-radius: 16px;
+    max-width: 500px;
+    width: 100%;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.app-title {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.welcome {
+    font-size: 14px;
+    color: #cccccc;
+}
+
+.dashboard-card h2 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: #ffffff;
+}
+
+.dashboard-card p {
+    margin: 5px 0;
+    color: #e0e0e0;
+}
+
+.dashboard-buttons {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #2a2a2a;
+    color: #f3f4f6;
+    padding: 12px 20px;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #374151;
+}
+
+.logout {
+    background-color: #991b1b;
+}
+
+.logout:hover {
+    background-color: #b91c1c;
 }

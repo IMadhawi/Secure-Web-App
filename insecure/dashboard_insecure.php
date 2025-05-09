@@ -31,13 +31,26 @@ $stmt->close();
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div class="form-container">
-    <h2>Welcome, <?= htmlspecialchars($_SESSION['username']) ?>!</h2>
-    <p><strong>Bio:</strong> <?= htmlspecialchars($bio) ?: 'No bio yet.' ?></p>
-    <p>You are logged in as <strong><?= htmlspecialchars($_SESSION['role']) ?></strong>.</p>
-    <a href="movies_insecure.php">View Movies</a><br>
-    <a href="edit_profile_insecure.php">Edit Profile</a><br>
-    <a href="login_insecure.php">Log Out</a>
+<div class="dashboard-container">
+    <div class="dashboard-card">
+        <header class="dashboard-header">
+            <div class="app-title">Popcorn Opinions</div>
+            <div class="welcome">Welcome, <?= htmlspecialchars($_SESSION['username']) ?>!</div>
+        </header>
+
+        <main>
+            <h2>Profile</h2>
+            <p><strong>Username:</strong> <?= htmlspecialchars($_SESSION['username']) ?></p>
+            <p><strong>Role:</strong> <?= htmlspecialchars($_SESSION['role']) ?></p>
+            <p><strong>Bio:</strong> <?= htmlspecialchars($bio) ?: 'No bio yet.' ?></p>
+
+            <div class="dashboard-buttons">
+                <a href="edit_profile_insecure.php" class="btn">✏️ Edit Profile</a>
+                <a href="movies_insecure.php" class="btn">🎬 View Movies</a>
+                <a href="login_insecure.php" class="btn logout">↩️ Log Out</a>
+            </div>
+        </main>
+    </div>
 </div>
 </body>
 </html>
