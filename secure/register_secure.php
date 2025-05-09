@@ -45,7 +45,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 <body class="login-page">
     <div class="login-container">
-        <h2>Register 🎬</h2>
+        <div class="login-logo">
+            <img src="images/Popcorn opinions logo.png" alt="Popcorn Logo" class="logo-img">
+            <div class="app-title">Popcorn Opinions</div>
+        </div>
+        <h2>Register</h2>
         <form method="POST">
             <label for="username">Username</label>
             <input name="username" placeholder="Username" required>

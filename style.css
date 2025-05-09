@@ -352,3 +352,15 @@ body.login-page {
 .logout:hover {
     background-color: #b91c1c;
 }
+
+.login-logo {
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.logo-img {
+    width: 50px; /* adjust size as needed */
+    height: auto;
+}
