@@ -30,8 +30,8 @@ This project is designed to:
 
 ## 🌐 Live Demo
 
-- 🔓 Insecure Version: [http://popcornopinionsis.fwh.is/popcornopinionsis/register_insecure.php](http://popcornopinionsis.fwh.is/popcornopinionsis/register_insecure.php)
-- 🔐 Secure Version: [https://popcornopinions.fwh.is/popcornopinions/register_secure.php](https://popcornopinions.fwh.is/popcornopinions/register_secure.php)
+- 🔓 Insecure Version: [http://popcornopinionsis.fwh.is/insecure/register_insecure.php](http://popcornopinionsis.fwh.is/insecure/register_insecure.php)
+- 🔐 Secure Version: [https://popcornopinions.fwh.is/secure/register_secure.php](https://popcornopinions.fwh.is/secure/register_secure.php)
 
 ---
 
