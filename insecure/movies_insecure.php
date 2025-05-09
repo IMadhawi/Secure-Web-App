@@ -20,7 +20,7 @@ if ($result) {
 <html>
 <head>
     <title>Movies</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="form-container">
